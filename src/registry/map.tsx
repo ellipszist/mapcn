@@ -125,8 +125,6 @@ type MapProps = {
   children?: ReactNode;
   /** Additional CSS classes for the map container */
   className?: string;
-  /** Custom loading component. Defaults to animated dots */
-  loader?: ReactNode;
   /**
    * Theme for the map. If not provided, automatically detects system preference.
    * Pass your theme value here.
@@ -168,7 +166,6 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   {
     children,
     className,
-    loader,
     theme: themeProp,
     styles,
     projection,
@@ -273,13 +270,25 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
     if (mapInstance.isMoving()) return;
 
     const current = getViewport(mapInstance);
-    internalUpdateRef.current = true;
-    mapInstance.jumpTo({
+    const next = {
       center: viewport.center ?? current.center,
       zoom: viewport.zoom ?? current.zoom,
       bearing: viewport.bearing ?? current.bearing,
       pitch: viewport.pitch ?? current.pitch,
-    });
+    };
+
+    if (
+      next.center[0] === current.center[0] &&
+      next.center[1] === current.center[1] &&
+      next.zoom === current.zoom &&
+      next.bearing === current.bearing &&
+      next.pitch === current.pitch
+    ) {
+      return;
+    }
+
+    internalUpdateRef.current = true;
+    mapInstance.jumpTo(next);
     internalUpdateRef.current = false;
   }, [mapInstance, isControlled, viewport]);
 
@@ -313,7 +322,7 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
         ref={containerRef}
         className={cn("relative w-full h-full", className)}
       >
-        {!isLoaded && (loader ?? <DefaultLoader />)}
+        {!isLoaded && <DefaultLoader />}
         {/* SSR-safe: children render only when map is loaded on client */}
         {mapInstance && children}
       </div>

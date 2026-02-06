@@ -107,12 +107,6 @@ export default function ApiReferencePage() {
               description: "Additional CSS classes for the map container.",
             },
             {
-              name: "loader",
-              type: "ReactNode",
-              description:
-                "Custom loading component. Defaults to animated dots. Pass null to disable.",
-            },
-            {
               name: "theme",
               type: '"light" | "dark"',
               description:
