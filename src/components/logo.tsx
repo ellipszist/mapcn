@@ -10,7 +10,7 @@ interface LogoProps {
 
 export function Logo({ className, onClick, isLink = true }: LogoProps) {
   const logoClasses =
-    "inline-flex items-center gap-1.5 text-[17px] leading-none font-bold";
+    "inline-flex items-center gap-1.5 text-lg leading-none font-bold";
 
   return isLink ? (
     <Link

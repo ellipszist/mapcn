@@ -16,6 +16,9 @@
       "target": "app/heatmap/page.tsx"
     }
   ],
+  "meta": {
+    "iframeHeight": "800px"
+  },
   "categories": [
     "visualization",
     "heatmap"

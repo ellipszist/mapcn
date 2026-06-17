@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "./copy-button";
@@ -19,13 +19,13 @@ export function ComponentPreviewClient({
   className,
 }: ComponentPreviewClientProps) {
   const [expanded, setExpanded] = useState(false);
+  const codeId = useId();
 
   return (
     <div className="space-y-4">
       <div
         className={cn(
-          "w-full overflow-hidden rounded-lg border",
-          "h-[420px]",
+          "h-[420px] w-full overflow-hidden rounded-lg border",
           className,
         )}
       >
@@ -37,9 +37,12 @@ export function ComponentPreviewClient({
           <CopyButton text={code} />
         </div>
         <div
+          id={codeId}
           className={cn(
-            "bg-muted/40 overflow-hidden p-4 text-sm transition-[max-height] [&_code]:bg-transparent! [&_pre]:bg-transparent!",
-            expanded ? "max-h-[420px] overflow-auto" : "max-h-44",
+            "bg-muted/40 p-4 text-sm [&_code]:bg-transparent! [&_pre]:bg-transparent!",
+            expanded
+              ? "max-h-[420px] overflow-auto"
+              : "max-h-44 overflow-hidden",
           )}
           dangerouslySetInnerHTML={{ __html: highlightedCode }}
         />
@@ -54,7 +57,9 @@ export function ComponentPreviewClient({
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setExpanded(!expanded)}
+              onClick={() => setExpanded(true)}
+              aria-expanded={expanded}
+              aria-controls={codeId}
               className="bg-background hover:bg-muted dark:bg-background dark:hover:bg-muted"
             >
               View Code

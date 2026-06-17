@@ -22,8 +22,8 @@ export function CopyButton({ text }: CopyButtonProps) {
       variant="ghost"
       size="icon-sm"
       onClick={copy}
-      aria-label="Copy code"
-      className="text-muted-foreground"
+      aria-label={copied ? "Copied" : "Copy code"}
+      className="text-muted-foreground backdrop-blur-xl"
     >
       {copied ? <Check /> : <Copy />}
     </Button>

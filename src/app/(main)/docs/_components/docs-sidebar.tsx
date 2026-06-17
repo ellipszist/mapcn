@@ -25,7 +25,7 @@ export function DocsSidebar() {
       className="sticky top-14 z-30 hidden h-[calc(100svh-3.5rem)] overscroll-none bg-transparent lg:flex"
       collapsible="none"
     >
-      <SidebarContent className="pt-6">
+      <SidebarContent className="pt-10">
         {docsNavigation.map((group) => (
           <SidebarGroup key={group.title}>
             <SidebarGroupLabel>{group.title}</SidebarGroupLabel>

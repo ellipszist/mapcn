@@ -62,7 +62,7 @@ export function DocsToc({ items, className }: DocsTocProps) {
         On This Page
       </p>
 
-      <div className="flex flex-col gap-0.5">
+      <div className="before:bg-border relative flex flex-col gap-0.5 before:absolute before:top-1 before:bottom-1 before:left-0 before:w-0.5 before:rounded-full">
         {items.map((item) => {
           const isActive = item.slug === activeHeading;
           return (
@@ -70,9 +70,9 @@ export function DocsToc({ items, className }: DocsTocProps) {
               key={item.slug}
               href={`#${item.slug}`}
               className={cn(
-                "py-1 text-sm no-underline transition-colors",
+                "relative py-1 pl-3 text-sm no-underline transition-colors",
                 isActive
-                  ? "text-foreground font-medium"
+                  ? "text-foreground before:bg-foreground before:absolute before:top-1 before:bottom-1 before:left-0 before:w-0.5 before:rounded-full"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
