@@ -32,7 +32,7 @@ export default function Page() {
           scrollZoom={false}
           renderWorldCopies={true}
         >
-          <MapControls showFullscreen />
+          <MapControls />
           {locations.map((location) => (
             <MapMarker
               key={location.city}

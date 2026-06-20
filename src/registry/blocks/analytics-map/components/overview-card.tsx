@@ -15,9 +15,9 @@ function MetricChart() {
   return (
     <ChartContainer
       config={usersPerDayChartConfig}
-      className="aspect-auto h-8 w-full"
+      className="aspect-auto h-14 w-full"
     >
-      <AreaChart data={usersPerDay} margin={{ left: 4, right: 4, top: 4 }}>
+      <AreaChart data={usersPerDay}>
         <defs>
           <linearGradient id="usersGradient" x1="0" y1="0" x2="0" y2="1">
             <stop
@@ -47,27 +47,27 @@ function MetricChart() {
 
 export function OverviewCard() {
   return (
-    <Card className="bg-card/70 absolute top-4 left-4 z-10 w-60 backdrop-blur-sm">
+    <Card className="bg-card/80 absolute top-4 left-4 z-10 w-60 gap-1 backdrop-blur-sm">
       <CardHeader>
         <div>
           <p className="text-muted-foreground pb-2 text-[10px] tracking-wider uppercase">
-            Users in last 7 days
+            Users in last 30 days
           </p>
-          <p className="text-3xl leading-none font-semibold">3,803</p>
+          <p className="text-3xl leading-none font-semibold">17,234</p>
         </div>
       </CardHeader>
 
       <CardContent>
         <MetricChart />
-        <div className="mt-4 flex items-center gap-1.5 text-xs">
+        <div className="mt-2 flex items-center gap-1.5 text-xs">
           <TrendingUp className="size-3 text-emerald-500" />
           <span className="font-medium text-emerald-500">+12.5%</span>
-          <span className="text-muted-foreground">vs previous 7 days</span>
+          <span className="text-muted-foreground">vs previous 30 days</span>
         </div>
 
         <div className="border-border/60 mt-4 border-t pt-4">
           <p className="text-muted-foreground text-[10px] tracking-wider uppercase">
-            Device category in last 7 days
+            Device category in last 30 days
           </p>
 
           <ChartContainer

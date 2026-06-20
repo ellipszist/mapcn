@@ -33,7 +33,7 @@ const footerLinks = {
 
 export function Footer({ className }: { className?: string }) {
   return (
-    <footer className={cn("mt-30 border-t", className)}>
+    <footer className={cn("bg-muted/30 mt-30 border-t", className)}>
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
           <div className="col-span-2 md:col-span-2">

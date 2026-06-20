@@ -13,7 +13,7 @@ export function BreakdownCard({ title, rows }: BreakdownCardProps) {
     rows.length > 0 ? Math.max(...rows.map((row) => row.value)) : 0;
 
   return (
-    <Card>
+    <Card className="gap-2">
       <CardHeader>
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
       </CardHeader>
@@ -23,21 +23,28 @@ export function BreakdownCard({ title, rows }: BreakdownCardProps) {
           <span>{title}</span>
           <span>Visitors</span>
         </div>
-        <div className="space-y-3">
-          {rows.map((row) => (
-            <div key={row.label} className="space-y-1.5">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-foreground/90 truncate">{row.label}</span>
-                <span className="text-foreground font-medium">{row.value}</span>
-              </div>
-              <div className="bg-muted h-1 rounded-full">
+        <div className="space-y-1.5">
+          {rows.map((row) => {
+            const pct = maxRowValue ? (row.value / maxRowValue) * 100 : 0;
+            return (
+              <div
+                key={row.label}
+                className="relative flex items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-xs"
+              >
                 <div
-                  className="h-full rounded-full bg-blue-500/85"
-                  style={{ width: `${(row.value / maxRowValue) * 100}%` }}
+                  className="absolute inset-y-0 left-0 rounded-md bg-blue-500/20"
+                  style={{ width: `${pct}%` }}
+                  aria-hidden
                 />
+                <span className="text-foreground/90 relative truncate pr-2">
+                  {row.label}
+                </span>
+                <span className="text-foreground relative font-medium tabular-nums">
+                  {row.value.toLocaleString()}
+                </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </CardContent>
     </Card>

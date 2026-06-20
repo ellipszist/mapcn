@@ -23,7 +23,7 @@ export default async function Page() {
 
   return (
     <>
-      <PageHeader align="left" showBackground={false}>
+      <PageHeader align="left">
         <PageHeaderHeading className="font-semibold md:text-5xl">
           Map blocks for your application
         </PageHeaderHeading>

@@ -16,47 +16,24 @@ function usePageHeaderContext() {
 interface PageHeaderProps {
   children: React.ReactNode;
   className?: string;
-  /** Show the dot grid background (default: true) */
-  showBackground?: boolean;
   /** Header content alignment (default: center) */
   align?: HeaderAlign;
 }
 
-function PageHeader({
-  children,
-  className,
-  showBackground = true,
-  align = "center",
-}: PageHeaderProps) {
+function PageHeader({ children, className, align = "center" }: PageHeaderProps) {
   return (
     <PageHeaderContext.Provider value={{ align }}>
-      <div className="relative">
-        {showBackground && (
-          <div className="pointer-events-none absolute inset-x-0 -inset-y-10 overflow-hidden">
-            <div
-              className="absolute inset-0 opacity-[0.16] dark:opacity-[0.12]"
-              style={{
-                backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
-                backgroundSize: "24px 24px",
-              }}
-            />
-
-            <div className="from-background to-background absolute inset-0 bg-linear-to-b via-transparent" />
-          </div>
+      <section
+        className={cn(
+          "container mx-auto flex w-full max-w-6xl flex-col gap-4 py-16 md:py-20 lg:py-24",
+          align === "center"
+            ? "items-center text-center"
+            : "items-start text-left",
+          className,
         )}
-
-        <section
-          className={cn(
-            "container mx-auto flex w-full max-w-6xl flex-col gap-4 py-16 md:py-20 lg:py-24",
-            align === "center"
-              ? "items-center text-center"
-              : "items-start text-left",
-            className,
-          )}
-        >
-          {children}
-        </section>
-      </div>
+      >
+        {children}
+      </section>
     </PageHeaderContext.Provider>
   );
 }
@@ -126,7 +103,6 @@ function PageHeaderDescription({
 interface PageActionsProps {
   children: React.ReactNode;
   className?: string;
-  stagger?: number;
 }
 
 function PageActions({ children, className }: PageActionsProps) {

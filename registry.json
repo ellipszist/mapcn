@@ -8,7 +8,10 @@
       "type": "registry:ui",
       "title": "Map",
       "description": "A MapLibre-powered map component with markers, popups, tooltips, routes, and controls.",
-      "dependencies": ["maplibre-gl", "lucide-react"],
+      "dependencies": [
+        "maplibre-gl",
+        "lucide-react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -20,7 +23,7 @@
       "css": {
         "@layer base": {
           ".maplibregl-popup-content": {
-             "@apply bg-transparent! shadow-none! p-0! rounded-none!": {}
+            "@apply bg-transparent! shadow-none! p-0! rounded-none!": {}
           },
           ".maplibregl-popup-tip": {
             "@apply hidden!": {}
@@ -33,8 +36,15 @@
       "type": "registry:block",
       "title": "Analytics Map",
       "description": "Real-time analytics overview with a world map, breakdown cards, and device stats.",
-      "dependencies": ["recharts", "lucide-react"],
-      "registryDependencies": ["@mapcn/map", "card", "chart"],
+      "dependencies": [
+        "recharts",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@mapcn/map",
+        "card",
+        "chart"
+      ],
       "files": [
         {
           "path": "src/registry/blocks/analytics-map/page.tsx",
@@ -57,9 +67,87 @@
           "target": "app/analytics/components/breakdown-card.tsx"
         }
       ],
-      "categories": ["analytics", "dashboard"],
+      "categories": [
+        "analytics",
+        "dashboard"
+      ],
       "meta": {
-        "iframeHeight": "970px"
+        "iframeHeight": "940px"
+      }
+    },
+    {
+      "name": "choropleth",
+      "type": "registry:block",
+      "title": "Choropleth",
+      "description": "World choropleth map shading countries by a metric, with a hover tooltip and legend.",
+      "dependencies": [
+        "maplibre-gl",
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "@mapcn/map"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/choropleth/page.tsx",
+          "type": "registry:page",
+          "target": "app/choropleth/page.tsx"
+        },
+        {
+          "path": "src/registry/blocks/choropleth/data.ts",
+          "type": "registry:component",
+          "target": "app/choropleth/data.ts"
+        }
+      ],
+      "categories": [
+        "visualization",
+        "choropleth"
+      ],
+      "meta": {
+        "iframeHeight": "720px"
+      }
+    },
+    {
+      "name": "store-locator",
+      "type": "registry:block",
+      "title": "Store Locator",
+      "description": "Searchable store list synced with map markers.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@mapcn/map",
+        "input",
+        "sidebar"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/store-locator/page.tsx",
+          "type": "registry:page",
+          "target": "app/store-locator/page.tsx"
+        },
+        {
+          "path": "src/registry/blocks/store-locator/data.ts",
+          "type": "registry:component",
+          "target": "app/store-locator/data.ts"
+        },
+        {
+          "path": "src/registry/blocks/store-locator/components/store-list.tsx",
+          "type": "registry:component",
+          "target": "app/store-locator/components/store-list.tsx"
+        },
+        {
+          "path": "src/registry/blocks/store-locator/components/locator-map.tsx",
+          "type": "registry:component",
+          "target": "app/store-locator/components/locator-map.tsx"
+        }
+      ],
+      "categories": [
+        "store-locator",
+        "locator"
+      ],
+      "meta": {
+        "iframeHeight": "800px"
       }
     },
     {
@@ -67,8 +155,14 @@
       "type": "registry:block",
       "title": "Logistics Network",
       "description": "Domestic logistics map with a sidebar of stats.",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["@mapcn/map", "sidebar", "separator"],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@mapcn/map",
+        "sidebar",
+        "separator"
+      ],
       "files": [
         {
           "path": "src/registry/blocks/logistics-network/page.tsx",
@@ -91,26 +185,10 @@
           "target": "app/logistics/components/network-map.tsx"
         }
       ],
-      "categories": ["logistics", "network"],
-      "meta": {
-        "iframeHeight": "800px"
-      }
-    },
-    {
-      "name": "heatmap",
-      "type": "registry:block",
-      "title": "Heatmap",
-      "description": "Globe-projected heatmap visualizing earthquake density with zoom-dependent styling.",
-      "dependencies": [],
-      "registryDependencies": ["@mapcn/map", "card"],
-      "files": [
-        {
-          "path": "src/registry/blocks/heatmap/page.tsx",
-          "type": "registry:page",
-          "target": "app/heatmap/page.tsx"
-        }
+      "categories": [
+        "logistics",
+        "network"
       ],
-      "categories": ["visualization", "heatmap"],
       "meta": {
         "iframeHeight": "800px"
       }
@@ -120,8 +198,15 @@
       "type": "registry:block",
       "title": "Delivery Tracker",
       "description": "Live order tracking with route progress, courier position, and order details.",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["@mapcn/map", "card", "badge", "button"],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@mapcn/map",
+        "card",
+        "badge",
+        "button"
+      ],
       "files": [
         {
           "path": "src/registry/blocks/delivery-tracker/page.tsx",
@@ -129,9 +214,37 @@
           "target": "app/delivery/page.tsx"
         }
       ],
-      "categories": ["tracking", "delivery"],
+      "categories": [
+        "tracking",
+        "delivery"
+      ],
       "meta": {
         "iframeHeight": "680px"
+      }
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:block",
+      "title": "Heatmap",
+      "description": "Globe-projected heatmap visualizing earthquake density with zoom-dependent styling.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@mapcn/map",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/heatmap/page.tsx",
+          "type": "registry:page",
+          "target": "app/heatmap/page.tsx"
+        }
+      ],
+      "categories": [
+        "visualization",
+        "heatmap"
+      ],
+      "meta": {
+        "iframeHeight": "800px"
       }
     }
   ]
