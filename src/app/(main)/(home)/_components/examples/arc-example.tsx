@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Map,
   MapArc,
@@ -5,6 +7,7 @@ import {
   MarkerContent,
   MarkerLabel,
 } from "@/registry/map";
+import { ExampleCard } from "./example-card";
 
 const hub = { name: "London", lng: -0.1276, lat: 51.5074 };
 
@@ -12,11 +15,8 @@ const destinations = [
   { name: "New York", lng: -74.006, lat: 40.7128 },
   { name: "São Paulo", lng: -46.6333, lat: -23.5505 },
   { name: "Cape Town", lng: 18.4241, lat: -33.9249 },
-  { name: "Dubai", lng: 55.2708, lat: 25.2048 },
   { name: "Mumbai", lng: 72.8777, lat: 19.076 },
-  { name: "Singapore", lng: 103.8198, lat: 1.3521 },
   { name: "Tokyo", lng: 139.6917, lat: 35.6895 },
-  { name: "Sydney", lng: 151.2093, lat: -33.8688 },
 ];
 
 const arcs = destinations.map((dest) => ({
@@ -27,12 +27,17 @@ const arcs = destinations.map((dest) => ({
 
 export function ArcExample() {
   return (
-    <div className="h-[420px] w-full">
-      <Map center={[hub.lng, hub.lat]} zoom={1} projection={{ type: "globe" }}>
+    <ExampleCard className="aspect-square" stagger={8}>
+      <Map
+        center={[-0.1276, 41.5074]}
+        zoom={1.2}
+        projection={{ type: "globe" }}
+      >
         <MapArc
           data={arcs}
           paint={{
             "line-color": "#3b82f6",
+            "line-opacity": 0.9,
             "line-dasharray": [2, 2],
           }}
           interactive={false}
@@ -41,12 +46,7 @@ export function ArcExample() {
         <MapMarker longitude={hub.lng} latitude={hub.lat}>
           <MarkerContent>
             <div className="size-3 rounded-full border-2 border-white bg-blue-500" />
-            <MarkerLabel
-              position="top"
-              className="bg-background/80 rounded-sm px-1.5 py-0.5 text-[11px] font-semibold backdrop-blur"
-            >
-              {hub.name}
-            </MarkerLabel>
+            <MarkerLabel position="top">{hub.name}</MarkerLabel>
           </MarkerContent>
         </MapMarker>
 
@@ -59,6 +59,6 @@ export function ArcExample() {
           </MapMarker>
         ))}
       </Map>
-    </div>
+    </ExampleCard>
   );
 }

@@ -1,69 +1,60 @@
 "use client";
 
-import {
-  Map,
-  MapMarker,
-  MapRef,
-  MarkerContent,
-  MarkerTooltip,
-} from "@/registry/map";
-import { useRef } from "react";
-import { ExampleCard } from "./example-card";
-import { Button } from "@/components/ui/button";
-import { Navigation } from "lucide-react";
+import { useRef, useState } from "react";
 
-const destination = {
-  name: "New York",
-  description: "United States",
-  center: [-74.006, 40.7128] as [number, number],
-  startCenter: [10, 50] as [number, number],
-};
+import { Map, MapMarker, MapRef, MarkerContent } from "@/registry/map";
+import { Button } from "@/components/ui/button";
+import { ExampleCard } from "./example-card";
+
+const destinations = [
+  { name: "New York", center: [-74.006, 40.7128] as [number, number] },
+  { name: "London", center: [-0.1276, 51.5074] as [number, number] },
+  { name: "Tokyo", center: [139.6917, 35.6895] as [number, number] },
+  { name: "Sydney", center: [151.2093, -33.8688] as [number, number] },
+];
 
 export function FlyToExample() {
   const mapRef = useRef<MapRef>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const flyTo = (index: number) => {
+    setActiveIndex(index);
+    mapRef.current?.flyTo({
+      center: destinations[index].center,
+      zoom: 4.5,
+      duration: 2000,
+      essential: true,
+    });
+  };
+
+  const active = destinations[activeIndex];
 
   return (
     <ExampleCard className="aspect-square" stagger={6}>
-      <Map
-        center={destination.startCenter}
-        zoom={0.6}
-        ref={mapRef}
-        projection={{ type: "globe" }}
-      >
-        <MapMarker
-          longitude={destination.center[0]}
-          latitude={destination.center[1]}
-        >
+      <Map ref={mapRef} center={active.center} zoom={4.5}>
+        <MapMarker longitude={active.center[0]} latitude={active.center[1]}>
           <MarkerContent>
             <div className="relative flex items-center justify-center">
-              <div className="absolute size-6 animate-ping rounded-full bg-cyan-500/20" />
-              <div className="size-4 rounded-full border-2 border-white bg-cyan-500 shadow-lg" />
+              <div className="absolute size-6 animate-ping rounded-full bg-blue-500/30" />
+              <div className="size-3 rounded-full border-2 border-white bg-blue-500 shadow-lg" />
             </div>
           </MarkerContent>
-          <MarkerTooltip>
-            <div className="text-center">
-              <div className="font-medium">{destination.name}</div>
-              <div className="text-background/70 text-[10px]">
-                {destination.description}
-              </div>
-            </div>
-          </MarkerTooltip>
         </MapMarker>
       </Map>
-      <Button
-        size="icon-sm"
-        variant="secondary"
-        className="absolute top-2 right-2"
-        onClick={() => {
-          mapRef.current?.flyTo({
-            center: destination.center,
-            zoom: 14,
-            duration: 2500,
-          });
-        }}
-      >
-        <Navigation className="size-4" />
-      </Button>
+
+      <div className="absolute inset-x-3 top-3 flex flex-wrap gap-1.5">
+        {destinations.map((dest, index) => (
+          <Button
+            key={dest.name}
+            size="xs"
+            variant={index === activeIndex ? "default" : "secondary"}
+            onClick={() => flyTo(index)}
+            className="rounded-full border"
+          >
+            {dest.name}
+          </Button>
+        ))}
+      </div>
     </ExampleCard>
   );
 }
