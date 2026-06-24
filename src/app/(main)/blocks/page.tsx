@@ -21,7 +21,7 @@ export default async function Page() {
   return (
     <>
       <PageHeader align="left" size="sm">
-        <PageHeaderHeading>Map Blocks</PageHeaderHeading>
+        <PageHeaderHeading>Blocks</PageHeaderHeading>
         <PageHeaderDescription>
           Pre-built, ready-to-use map blocks. Browse, preview, and copy them
           into your app with one command.

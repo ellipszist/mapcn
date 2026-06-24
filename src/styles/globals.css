@@ -146,7 +146,7 @@
 }
 
 .container-wide {
-  @apply max-w-[1640px] mx-auto px-6;
+  @apply max-w-[1650px] mx-auto px-6;
 }
 
 @keyframes fade-up {

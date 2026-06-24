@@ -39,8 +39,8 @@ function PageHeader({
         className={cn(
           "container mx-auto flex w-full max-w-6xl flex-col",
           size === "sm"
-            ? "gap-3 py-14 md:py-16"
-            : "gap-4 py-16 md:py-20 lg:py-24",
+            ? "gap-3 py-14 md:py-18"
+            : "gap-4 py-16 md:py-20 lg:py-24 lg:pb-20",
           align === "center"
             ? "items-center text-center"
             : "items-start text-left",
@@ -71,7 +71,7 @@ function PageHeaderHeading({
       className={cn(
         "animate-fade-up animate-stagger max-w-4xl font-bold tracking-tight",
         size === "sm"
-          ? "text-3xl font-semibold md:text-4xl"
+          ? "text-4xl font-semibold md:text-5xl"
           : "text-4xl sm:text-5xl md:text-6xl",
         align === "center" ? "text-center" : "text-left",
         className,
