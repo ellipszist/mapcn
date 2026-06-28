@@ -5,6 +5,7 @@ import { Check, Maximize, Terminal } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { RegistryBlockItem, type FileTree } from "@/lib/blocks";
+import { trackEvent } from "@/lib/events";
 import { BlockViewerCode, type HighlightedFile } from "./block-viewer-code";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
@@ -29,6 +30,7 @@ export function BlockPreview({
     await navigator.clipboard.writeText(`npx shadcn@latest add @mapcn/${name}`);
     setCopiedType("cli");
     setTimeout(() => setCopiedType(null), 2000);
+    trackEvent({ name: "copy_block_cli", properties: { block: name } });
   }
 
   return (

@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 
 import { mapInstallAgentPrompt } from "@/lib/llm-prompts";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/events";
 
 export function AgentPrompt() {
   const [copied, setCopied] = useState(false);
@@ -14,6 +15,7 @@ export function AgentPrompt() {
       await navigator.clipboard.writeText(mapInstallAgentPrompt);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
+      trackEvent({ name: "copy_agent_prompt" });
     } catch (error) {
       console.error("Failed to copy prompt:", error);
     }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { trackEvent } from "@/lib/events";
 
 interface InstallCommandProps {
   /** The shadcn registry item to add, e.g. "@mapcn/map" */
@@ -32,6 +33,10 @@ export function InstallCommand({ name }: InstallCommandProps) {
     await navigator.clipboard.writeText(current.command);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    trackEvent({
+      name: "copy_install_command",
+      properties: { name, packageManager: active },
+    });
   };
 
   return (

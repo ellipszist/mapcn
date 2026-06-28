@@ -20,6 +20,7 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar";
 import { type FileTree } from "@/lib/blocks";
+import { trackEvent } from "@/lib/events";
 
 export interface HighlightedFile {
   path: string;
@@ -192,6 +193,10 @@ function CopyCodeButton() {
         await navigator.clipboard.writeText(file.content);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+        trackEvent({
+          name: "copy_block_code",
+          properties: { file: file.target },
+        });
       }}
     >
       {copied ? <Check /> : <Copy />}
