@@ -8,7 +8,7 @@ import { edgeNodes, mapView, WORLD_GEOJSON } from "./data";
 export default function Page() {
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
-      <div className="bg-card flex h-[520px] w-full max-w-4xl overflow-hidden rounded-xl border shadow-sm">
+      <div className="bg-card flex h-[500px] w-full max-w-4xl overflow-hidden rounded-xl border shadow-sm">
         <StatusSidebar nodes={edgeNodes} />
 
         <div className="relative min-w-0 flex-1">

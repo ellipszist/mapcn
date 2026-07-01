@@ -25,7 +25,7 @@ export function StatusSidebar({ nodes }: StatusSidebarProps) {
 
         <div className="mt-3 grid grid-cols-2 gap-2">
           <div className="bg-background/60 rounded-md border p-2">
-            <p className="text-muted-foreground text-[10px] uppercase tracking-wide">
+            <p className="text-muted-foreground text-[10px] tracking-wide uppercase">
               Uptime
             </p>
             <p className="text-foreground text-sm font-semibold tabular-nums">
@@ -33,7 +33,7 @@ export function StatusSidebar({ nodes }: StatusSidebarProps) {
             </p>
           </div>
           <div className="bg-background/60 rounded-md border p-2">
-            <p className="text-muted-foreground text-[10px] uppercase tracking-wide">
+            <p className="text-muted-foreground text-[10px] tracking-wide uppercase">
               Edges up
             </p>
             <p className="text-foreground text-sm font-semibold tabular-nums">
@@ -52,9 +52,7 @@ export function StatusSidebar({ nodes }: StatusSidebarProps) {
 
           return (
             <li key={node.id} className="flex items-center gap-2.5 px-3 py-2">
-              <span
-                className={cn("size-2 shrink-0 rounded-full", meta.dot)}
-              />
+              <span className={cn("size-2 shrink-0 rounded-full", meta.dot)} />
 
               <div className="min-w-0 flex-1">
                 <p className="text-foreground truncate text-xs font-medium">

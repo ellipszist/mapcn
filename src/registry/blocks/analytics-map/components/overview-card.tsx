@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ChartContainer } from "@/components/ui/chart";
 import { TrendingUp } from "lucide-react";
-import { Area, AreaChart, Cell, Pie, PieChart } from "recharts";
+import { Area, AreaChart, Pie, PieChart } from "recharts";
 import {
   deviceCategoryChartConfig,
   deviceCategoryData,
@@ -82,12 +82,7 @@ export function OverviewCard() {
                 innerRadius={32}
                 outerRadius={52}
                 strokeWidth={2}
-                color="var(--color-users)"
-              >
-                {deviceCategoryData.map((entry) => (
-                  <Cell key={entry.name} fill={entry.fill} />
-                ))}
-              </Pie>
+              />
             </PieChart>
           </ChartContainer>
 

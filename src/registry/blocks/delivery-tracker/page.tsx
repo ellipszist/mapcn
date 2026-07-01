@@ -218,7 +218,7 @@ export default function Page() {
                 offset={[0, 10]}
               >
                 <MarkerContent>
-                  <div className="relative grid size-9 place-items-center rounded-full border-2 border-white bg-blue-500 shadow-md dark:bg-blue-600">
+                  <div className="relative grid size-9 place-items-center rounded-full bg-blue-500 shadow-md dark:bg-blue-600">
                     <Truck className="size-4 text-white" />
                   </div>
                 </MarkerContent>

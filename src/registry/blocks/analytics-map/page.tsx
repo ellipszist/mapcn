@@ -33,11 +33,11 @@ export default function Page() {
       <div className="bg-card relative h-(--map-height)">
         <Map
           center={[-2, 16]}
-          zoom={1.5}
+          zoom={1.4}
           scrollZoom={false}
-          renderWorldCopies={true}
           maxZoom={4}
-          minZoom={1.5}
+          minZoom={1.4}
+          renderWorldCopies
           blank
         >
           <MapGeoJSON data={WORLD_GEOJSON} linePaint={false} />

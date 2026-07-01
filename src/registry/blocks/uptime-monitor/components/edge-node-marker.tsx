@@ -34,7 +34,7 @@ export function EdgeNodeMarker({ node }: EdgeNodeMarkerProps) {
             {node.id}
           </span>
         </div>
-        <div className="text-muted-foreground mt-1.5 flex items-center justify-between gap-3 text-[10px]">
+        <div className="text-muted-foreground mt-1.5 flex items-center justify-between gap-3 text-[11px]">
           <span>{node.status === "down" ? "—" : `${node.latency} ms`}</span>
           <span className="tabular-nums">{node.uptime.toFixed(2)}%</span>
         </div>

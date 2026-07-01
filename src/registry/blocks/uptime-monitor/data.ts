@@ -11,10 +11,7 @@ export interface EdgeNode {
   uptime: number;
 }
 
-export const statusMeta: Record<
-  EdgeStatus,
-  { dot: string; text: string }
-> = {
+export const statusMeta: Record<EdgeStatus, { dot: string; text: string }> = {
   operational: {
     dot: "bg-emerald-500",
     text: "text-emerald-600 dark:text-emerald-400",
@@ -35,8 +32,8 @@ export const WORLD_GEOJSON =
 
 export const mapView = {
   center: [5, 28] as [number, number],
-  zoom: 0.5,
-  minZoom: 0.5,
+  zoom: 0.45,
+  minZoom: 0.45,
   maxZoom: 2,
 };
 
