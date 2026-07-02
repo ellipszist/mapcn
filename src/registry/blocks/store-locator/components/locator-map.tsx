@@ -69,7 +69,7 @@ export function LocatorMap({
       <SidebarTrigger className="bg-background absolute top-3 left-3 z-10 border shadow-sm md:hidden" />
 
       <Map center={center} zoom={12} minZoom={10} maxZoom={17}>
-        <MapControls showFullscreen />
+        <MapControls showFullscreen showCompass />
         <FlyToSelected store={selected} />
 
         {stores.map((store) => (

@@ -32,7 +32,7 @@ export function BreakdownCard({ title, rows }: BreakdownCardProps) {
                 className="relative flex items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-xs"
               >
                 <div
-                  className="bg-muted-foreground/20 absolute inset-y-0 left-0 rounded-md"
+                  className="bg-chart-2/20 absolute inset-y-0 left-0 rounded-md"
                   style={{ width: `${pct}%` }}
                   aria-hidden
                 />

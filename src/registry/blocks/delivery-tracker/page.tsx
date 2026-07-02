@@ -108,8 +108,8 @@ export default function Page() {
   const courierPosition = progressCoordinates[progressCoordinates.length - 1];
 
   return (
-    <div className="p-8">
-      <div className="bg-sidebar mx-auto grid max-w-7xl rounded-xl border md:h-[600px] md:grid-cols-[1.05fr_1fr]">
+    <div className="flex min-h-screen items-center justify-center p-8">
+      <div className="bg-sidebar mx-auto grid w-[1200px] rounded-xl border md:grid-cols-[1.05fr_1fr]">
         <div className="flex flex-col p-5 md:p-6">
           <div className="space-y-1">
             <h3 className="text-2xl font-semibold tracking-tight">
@@ -127,7 +127,7 @@ export default function Page() {
             <CardContent className="space-y-5">
               {deliveryMeals.map((meal) => (
                 <div key={meal.name} className="flex items-center gap-3">
-                  <div className="bg-muted grid size-8 place-items-center rounded-full text-xs font-medium">
+                  <div className="bg-muted grid size-8 place-items-center rounded-full text-xs">
                     <Utensils className="text-muted-foreground size-4" />
                   </div>
                   <div className="min-w-4 flex-1">
@@ -156,7 +156,7 @@ export default function Page() {
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <Card>
               <CardContent className="space-y-2">
-                <p className="text-muted-foreground text-sm font-medium">
+                <p className="text-muted-foreground text-sm">
                   Pickup confirmed
                 </p>
                 <p className="text-sm font-medium">Mon, Feb 10 at 1:48 PM</p>
@@ -164,7 +164,7 @@ export default function Page() {
             </Card>
             <Card>
               <CardContent className="space-y-2">
-                <p className="text-muted-foreground text-sm font-medium">
+                <p className="text-muted-foreground text-sm">
                   Remaining travel
                 </p>
                 <p className="text-sm font-medium">
@@ -175,24 +175,24 @@ export default function Page() {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <Button size="sm" className="gap-1.5">
-              <Clock3 className="size-4" />
+            <Button size="sm">
+              <Clock3 />
               View timeline
             </Button>
-            <Button variant="outline" size="sm" className="gap-1.5">
-              <UserRound className="size-4" />
+            <Button variant="outline" size="sm">
+              <UserRound />
               Contact courier
             </Button>
           </div>
         </div>
 
-        <div className="relative h-[400px] overflow-hidden rounded-xl shadow-sm md:h-full">
+        <div className="relative h-[450px] overflow-hidden rounded-xl shadow-sm md:h-full">
           <Map
             loading={loading}
             center={[-122.4263, 37.756]}
             zoom={13.6}
-            minZoom={10}
-            maxZoom={16}
+            minZoom={12}
+            maxZoom={15}
           >
             <MapRoute
               id="delivery-full-route"

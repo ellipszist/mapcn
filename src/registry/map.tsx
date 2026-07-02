@@ -1298,8 +1298,8 @@ type MapGeoJSONProps<
 // with page-background separators between shapes. Override either via
 // `fillPaint` / `linePaint`.
 const GEOJSON_DEFAULT_COLORS = {
-  light: { fill: "#d4d4d4", line: "#fafafa" },
-  dark: { fill: "#404040", line: "#0a0a0a" },
+  light: { fill: "#d4d4d4", line: "#ffffff" },
+  dark: { fill: "#404040", line: "#171717" },
 } satisfies Record<Theme, { fill: string; line: string }>;
 
 /**

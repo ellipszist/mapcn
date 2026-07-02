@@ -70,20 +70,20 @@ export const usersPerDay = [
 export const usersPerDayChartConfig = {
   users: {
     label: "Users",
-    color: "var(--color-neutral-500)",
+    color: "var(--chart-1)",
   },
 } satisfies ChartConfig;
 
 export const deviceCategoryData = [
-  { name: "Desktop", value: 73.3, fill: "var(--color-neutral-500)" },
-  { name: "Mobile", value: 25.0, fill: "var(--color-neutral-400)" },
-  { name: "Tablet", value: 1.7, fill: "var(--color-neutral-300)" },
+  { name: "Desktop", value: 73.3, fill: "var(--chart-1)" },
+  { name: "Mobile", value: 25.0, fill: "var(--chart-2)" },
+  { name: "Tablet", value: 1.7, fill: "var(--chart-3)" },
 ];
 
 export const deviceCategoryChartConfig = {
-  desktop: { label: "Desktop", color: "var(--color-neutral-500)" },
-  mobile: { label: "Mobile", color: "var(--color-neutral-400)" },
-  tablet: { label: "Tablet", color: "var(--color-neutral-300)" },
+  desktop: { label: "Desktop", color: "var(--chart-1)" },
+  mobile: { label: "Mobile", color: "var(--chart-2)" },
+  tablet: { label: "Tablet", color: "var(--chart-3)" },
 } satisfies ChartConfig;
 
 export const visitedPagesRows: BreakdownRow[] = [

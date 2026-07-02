@@ -112,6 +112,7 @@ export default function Page() {
         zoom={mapConfig.view.zoom}
         minZoom={mapConfig.view.minZoom}
         maxZoom={mapConfig.view.maxZoom}
+        scrollZoom={false}
         dragRotate={false}
         pitchWithRotate={false}
         loading={!countries}

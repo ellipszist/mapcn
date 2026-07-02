@@ -34,9 +34,11 @@ export default function Page() {
         <Map
           center={[-2, 16]}
           zoom={1.4}
-          scrollZoom={false}
           maxZoom={4}
           minZoom={1.4}
+          scrollZoom={false}
+          dragRotate={false}
+          pitchWithRotate={false}
           renderWorldCopies
           blank
         >
@@ -50,7 +52,7 @@ export default function Page() {
             >
               <MarkerContent className="group">
                 <div
-                  className="bg-muted-foreground/80 group-hover:bg-muted-foreground/90 rounded-full transition-[transform,background-color] group-hover:scale-110"
+                  className="bg-chart-2/80 group-hover:bg-chart-2/90 rounded-full transition-[transform,background-color] group-hover:scale-110"
                   style={{
                     width: location.size * 3,
                     height: location.size * 3,
