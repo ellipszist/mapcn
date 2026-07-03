@@ -36,9 +36,11 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+  --color-surface: var(--surface);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-code-number: var(--code-number);
+  --color-code: var(--code);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -81,7 +83,9 @@
   --sidebar-ring: oklch(0.708 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --surface: oklch(0.99 0 0);
   --code-number: oklch(0.69 0 0);
+  --code: var(--surface)
 }
 
 .dark {
@@ -116,7 +120,9 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --surface: oklch(0.195 0 0);
   --code-number: oklch(0.54 0 0);
+  --code: var(--surface)
 }
 
 @layer base {
@@ -213,13 +219,13 @@
 html .shiki,
 html .shiki span {
   color: var(--shiki-light) !important;
-  background-color: transparent !important;
+  background-color: var(--color-code);
 }
 
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
-  background-color: transparent !important;
+  background-color: var(--color-code);
 }
 
 code {

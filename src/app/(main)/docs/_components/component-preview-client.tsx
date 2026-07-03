@@ -39,21 +39,15 @@ export function ComponentPreviewClient({
         <div
           id={codeId}
           className={cn(
-            "bg-muted/40 p-4 text-sm [&_code]:bg-transparent! [&_pre]:bg-transparent!",
+            "bg-code no-scrollbar p-4 text-sm",
             expanded
-              ? "max-h-[420px] overflow-auto"
-              : "max-h-44 overflow-hidden",
+              ? "max-h-[420px] overflow-x-auto"
+              : "max-h-42 overflow-hidden",
           )}
           dangerouslySetInnerHTML={{ __html: highlightedCode }}
         />
-        <div
-          className={cn(
-            "absolute inset-x-0 bottom-0 flex w-full items-center justify-center",
-            !expanded &&
-              "from-background to-background/0 bg-linear-to-t pt-12 pb-6",
-          )}
-        >
-          {!expanded && (
+        {!expanded && (
+          <div className="from-background to-background/0 absolute inset-x-0 bottom-0 flex w-full items-center justify-center bg-linear-to-t pt-16 pb-6">
             <Button
               variant="outline"
               size="sm"
@@ -64,8 +58,8 @@ export function ComponentPreviewClient({
             >
               View Code
             </Button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

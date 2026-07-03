@@ -22,7 +22,7 @@ export async function CodeBlock({
         </div>
       )}
       <div
-        className="bg-muted/40 overflow-auto p-4 text-sm [&_code]:bg-transparent! [&_pre]:bg-transparent!"
+        className="bg-code no-scrollbar overflow-auto p-4 text-sm"
         dangerouslySetInnerHTML={{ __html: highlighted }}
       />
     </div>

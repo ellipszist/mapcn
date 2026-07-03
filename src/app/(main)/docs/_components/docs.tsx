@@ -136,7 +136,7 @@ interface DocsNoteProps {
 
 export function DocsNote({ children }: DocsNoteProps) {
   return (
-    <div className="bg-muted/40 text-foreground/80 [&_strong]:text-foreground rounded-lg border px-5 py-4 text-[15px] leading-relaxed [&_strong]:font-medium">
+    <div className="bg-code text-foreground/80 [&_strong]:text-foreground rounded-lg border px-5 py-4 text-[15px] leading-relaxed [&_strong]:font-medium">
       {children}
     </div>
   );
@@ -197,7 +197,7 @@ export function DocsPropTable({ props }: DocsPropTableProps) {
     <div className="my-6 overflow-hidden rounded-lg border">
       <Table>
         <TableHeader>
-          <TableRow className="bg-muted/30 hover:bg-transparent">
+          <TableRow className="bg-surface">
             <TableHead className="h-10 px-4 text-xs font-medium">
               Prop
             </TableHead>
@@ -219,12 +219,12 @@ export function DocsPropTable({ props }: DocsPropTableProps) {
                 <DocsCode className="text-[13px]">{prop.name}</DocsCode>
               </TableCell>
               <TableCell className="px-4 py-3 align-top whitespace-normal">
-                <DocsCode className="text-muted-foreground text-xs">
+                <DocsCode className="text-foreground/70 text-xs">
                   {prop.type}
                 </DocsCode>
               </TableCell>
               <TableCell className="px-4 py-3 align-top">
-                <DocsCode className="text-muted-foreground text-xs whitespace-normal">
+                <DocsCode className="text-foreground/70 text-xs whitespace-normal">
                   {prop.default ?? "—"}
                 </DocsCode>
               </TableCell>

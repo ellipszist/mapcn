@@ -23,7 +23,7 @@ export function CopyButton({ text }: CopyButtonProps) {
       size="icon-sm"
       onClick={copy}
       aria-label={copied ? "Copied" : "Copy code"}
-      className="text-muted-foreground backdrop-blur-xl"
+      className="text-muted-foreground bg-code"
     >
       {copied ? <Check /> : <Copy />}
     </Button>

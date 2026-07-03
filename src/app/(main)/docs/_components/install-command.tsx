@@ -42,7 +42,7 @@ export function InstallCommand({ name }: InstallCommandProps) {
   return (
     <div className="relative w-full overflow-hidden rounded-lg border">
       <Tabs value={active} onValueChange={setActive} className="gap-0">
-        <div className="bg-muted/40 flex items-center justify-between border-b pr-2 pl-2">
+        <div className="bg-code flex items-center justify-between border-b pr-2 pl-2">
           <TabsList variant="line" className="h-9 bg-transparent">
             {tabs.map((tab) => (
               <TabsTrigger
@@ -66,7 +66,7 @@ export function InstallCommand({ name }: InstallCommandProps) {
         </div>
         {tabs.map((tab) => (
           <TabsContent key={tab.manager} value={tab.manager}>
-            <pre className="bg-muted/40 overflow-x-auto p-4 text-sm">
+            <pre className="bg-code overflow-x-auto p-4 text-sm">
               <code className="font-mono" data-language="bash">
                 {tab.command}
               </code>

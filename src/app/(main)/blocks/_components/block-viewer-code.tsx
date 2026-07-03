@@ -77,7 +77,7 @@ export function BlockViewerCode({
           <FileTreeSidebar />
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
-          <div className="bg-muted/40 flex h-12 shrink-0 items-center gap-2 border-b px-4 text-sm">
+          <div className="bg-code flex h-12 shrink-0 items-center gap-2 border-b px-4 text-sm">
             <span className="text-muted-foreground">{file.target}</span>
             <div className="ml-auto">
               <CopyCodeButton />
@@ -86,7 +86,7 @@ export function BlockViewerCode({
           <div
             key={file.path}
             dangerouslySetInnerHTML={{ __html: file.highlightedContent }}
-            className="bg-muted/40 flex-1 overflow-y-auto p-4 text-sm [&_code]:bg-transparent! [&_pre]:bg-transparent!"
+            className="bg-code no-scrollbar flex-1 overflow-x-auto p-4 text-sm"
           />
         </div>
       </div>
