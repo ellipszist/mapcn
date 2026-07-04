@@ -176,15 +176,13 @@ export function FilterSidebar({ hubs, routes }: FilterSidebarProps) {
         <div className="bg-background space-y-1.5 rounded-md border px-3 py-2 text-xs">
           <div className="flex justify-between">
             <span className="text-muted-foreground">Shipments</span>
-            <span className="text-primary font-medium tabular-nums">
+            <span className="font-medium tabular-nums">
               {totalShipments.toLocaleString()}
             </span>
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Routes</span>
-            <span className="text-primary font-medium tabular-nums">
-              {routes.length}
-            </span>
+            <span className="font-medium tabular-nums">{routes.length}</span>
           </div>
         </div>
       </SidebarFooter>

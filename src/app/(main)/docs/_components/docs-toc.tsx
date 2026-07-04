@@ -58,11 +58,11 @@ export function DocsToc({ items, className }: DocsTocProps) {
 
   return (
     <nav aria-label="On this page" className={cn("flex flex-col", className)}>
-      <p className="text-sidebar-foreground/70 mb-3 text-xs font-medium">
+      <p className="text-muted-foreground/70 mb-3 text-[11px] font-semibold tracking-wide uppercase">
         On This Page
       </p>
 
-      <div className="before:bg-border relative flex flex-col gap-0.5 before:absolute before:top-1 before:bottom-1 before:left-0 before:w-0.5 before:rounded-full">
+      <div className="flex flex-col gap-1.5">
         {items.map((item) => {
           const isActive = item.slug === activeHeading;
           return (
@@ -70,9 +70,9 @@ export function DocsToc({ items, className }: DocsTocProps) {
               key={item.slug}
               href={`#${item.slug}`}
               className={cn(
-                "relative py-1 pl-3 text-sm no-underline transition-colors",
+                "py-0.5 text-sm no-underline transition-colors",
                 isActive
-                  ? "text-foreground before:bg-foreground before:absolute before:top-1 before:bottom-1 before:left-0 before:w-0.5 before:rounded-full"
+                  ? "text-foreground font-medium"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >

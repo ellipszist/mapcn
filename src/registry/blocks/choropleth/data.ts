@@ -26,11 +26,9 @@ interface ChoroplethColors {
 }
 
 /**
- * Central map config — colors, the value→color scale, and the initial view.
- * WebGL paint can't read CSS variables, so colors are concrete values per
- * theme. The no-data fill stays muted, while the ramp uses hex equivalents of
- * the grayscale chart tokens from globals.css. Values move toward darker chart
- * colors in light mode and toward chart-1 in dark mode.
+ * Central map config: colors, the value→color scale, and the initial view.
+ * Colors are concrete hex values (not CSS variables) since WebGL paint can't
+ * read them. Update `colors.light`/`colors.dark` below for custom colors.
  */
 export const mapConfig = {
   view: {

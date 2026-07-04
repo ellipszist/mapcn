@@ -51,7 +51,7 @@ function MapControlsCard() {
           />
           <span>{statusConfig.delayed.label}</span>
         </div>
-        <div className="bg-border h-4 w-px" />
+        <Separator orientation="vertical" className="h-4!" />
         <div className="flex items-center gap-1.5">
           <div className="size-2.5 shrink-0 rounded-full border border-white bg-blue-500 shadow-sm" />
           <span>Hub</span>

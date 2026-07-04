@@ -75,7 +75,10 @@ src/
 
 ## Design System
 
+- Minimal, content-first aesthetic - no visual noise, no unnecessary borders/shadows/decoration
 - Color palette is monochrome (grayscale oklch)
+- Generous, consistent white space; let layouts breathe rather than packing elements tightly
+- Clear typographic hierarchy - Geist Sans for UI/prose, Geist Mono for code/labels; use size, weight, and muted-foreground (not color) to establish hierarchy
 - Radius: `0.625rem` base with computed variants
 - Animations: `fade-up`, `fade-in`, `scale-in` with staggered delays (85ms intervals)
 - Header: sticky, backdrop-blur, gradient bottom border

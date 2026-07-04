@@ -99,21 +99,20 @@ export default function IntroductionPage() {
         </p>
         <ul>
           <li>
-            <strong className="text-foreground">Own Your Code:</strong> Copy the
-            components into your project and customize everything.
+            <strong>Own Your Code:</strong> Copy the components into your
+            project and customize everything.
           </li>
           <li>
-            <strong className="text-foreground">Start Fast:</strong> Run one
-            command and render your first map with production-ready defaults.
+            <strong>Start Fast:</strong> Run one command and render your first
+            map with production-ready defaults.
           </li>
           <li>
-            <strong className="text-foreground">Scale Safely:</strong> Build on
-            top of MapLibre directly, then drop to raw APIs when needed.
+            <strong>Scale Safely:</strong> Build on top of MapLibre directly,
+            then drop to raw APIs when needed.
           </li>
           <li>
-            <strong className="text-foreground">Design-System Friendly:</strong>{" "}
-            Styled with Tailwind and made to fit naturally with shadcn/ui
-            patterns.
+            <strong>Design-System Friendly:</strong> Styled with Tailwind and
+            made to fit naturally with shadcn/ui patterns.
           </li>
         </ul>
       </DocsSection>

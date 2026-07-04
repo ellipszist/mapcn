@@ -40,6 +40,11 @@ function buildFillColor(theme: Theme): unknown[] {
   ];
 }
 
+const legendGradientStyle = {
+  "--choropleth-ramp-light": `linear-gradient(to right, ${mapConfig.colors.light.ramp.join(", ")})`,
+  "--choropleth-ramp-dark": `linear-gradient(to right, ${mapConfig.colors.dark.ramp.join(", ")})`,
+} as React.CSSProperties;
+
 interface HoverInfo {
   name: string;
   visitors: number;
@@ -56,25 +61,6 @@ type CountryFeatureCollection = GeoJSON.FeatureCollection<
   GeoJSON.Geometry,
   CountryProperties
 >;
-
-function Legend({ theme }: { theme: Theme }) {
-  const gradient = `linear-gradient(to right, ${mapConfig.colors[theme].ramp.join(", ")})`;
-
-  return (
-    <div className="bg-card/90 absolute bottom-4 left-4 z-10 rounded-lg border px-3 py-2.5 backdrop-blur-sm">
-      <p className="text-foreground text-xs font-medium">Visitors by country</p>
-      <div
-        className="mt-2 h-2 w-40 rounded-full"
-        style={{ backgroundImage: gradient }}
-        suppressHydrationWarning
-      />
-      <div className="text-muted-foreground flex items-center justify-between pt-1.5 text-[10px]">
-        <span>Low</span>
-        <span>High</span>
-      </div>
-    </div>
-  );
-}
 
 export default function Page() {
   const { resolvedTheme } = useTheme();
@@ -104,6 +90,7 @@ export default function Page() {
     }),
     [theme],
   );
+
   return (
     <div className="bg-card relative h-screen overflow-hidden">
       <Map
@@ -165,7 +152,19 @@ export default function Page() {
         )}
       </Map>
 
-      <Legend theme={theme} />
+      <div
+        className="bg-card absolute bottom-4 left-4 z-10 rounded-lg border px-3 py-2.5 backdrop-blur-sm"
+        style={legendGradientStyle}
+      >
+        <p className="text-foreground text-xs font-medium">
+          Visitors by country
+        </p>
+        <div className="mt-2 h-2 w-40 rounded-full [background-image:var(--choropleth-ramp-light)] dark:[background-image:var(--choropleth-ramp-dark)]" />
+        <div className="text-muted-foreground flex items-center justify-between pt-1.5 text-[10px]">
+          <span>Low</span>
+          <span>High</span>
+        </div>
+      </div>
     </div>
   );
 }

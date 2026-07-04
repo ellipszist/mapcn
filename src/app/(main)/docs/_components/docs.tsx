@@ -122,7 +122,7 @@ export function DocsSection({ title, children }: DocsSectionProps) {
           {title}
         </h2>
       )}
-      <div className="text-primary [&_strong]:text-foreground [&_em]:text-muted-foreground space-y-4 text-base leading-7 [&_strong]:font-medium [&>ol]:list-decimal [&>ol]:space-y-2 [&>ol]:pl-5 [&>ol>li]:leading-7 [&>p]:leading-7 [&>ul]:list-disc [&>ul]:space-y-2 [&>ul]:pl-5 [&>ul>li]:leading-7">
+      <div className="[&_em]:text-muted-foreground space-y-4 text-base leading-7 [&_strong]:font-medium [&>ol]:list-decimal [&>ol]:space-y-2 [&>ol]:pl-5 [&>ol>li]:leading-7 [&>p]:leading-7 [&>ul]:list-disc [&>ul]:space-y-2 [&>ul]:pl-5 [&>ul>li]:leading-7">
         {children}
       </div>
     </section>
