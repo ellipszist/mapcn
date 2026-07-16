@@ -30,7 +30,7 @@ export function FlyToExample() {
   const active = destinations[activeIndex];
 
   return (
-    <ExampleCard className="aspect-square" stagger={6}>
+    <ExampleCard className="aspect-square" stagger={8}>
       <Map
         ref={mapRef}
         center={active.center}

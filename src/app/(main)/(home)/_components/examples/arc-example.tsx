@@ -27,7 +27,7 @@ const arcs = destinations.map((dest) => ({
 
 export function ArcExample() {
   return (
-    <ExampleCard className="aspect-square" stagger={8}>
+    <ExampleCard className="aspect-square" stagger={6}>
       <Map
         center={[-0.1276, 41.5074]}
         zoom={1}

@@ -158,7 +158,7 @@
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -200,7 +200,7 @@
 
 .animate-stagger {
   --stagger: 0;
-  --delay: 85ms;
+  --delay: 100ms;
   animation-delay: calc(var(--stagger) * var(--delay));
 }
 
@@ -239,15 +239,15 @@ code {
 }
 
 code .line::before {
-    font-size: var(--text-sm);
-    counter-increment: step;
-    content: counter(step);
-    display: inline-block;
-    width: calc(var(--spacing) * 16);
-    padding-right: calc(var(--spacing) * 6);
-    text-align: right;
-    color: var(--color-code-number);
-    background-color: var(--color-code);
-    position: sticky;
-    left: 0;
+  font-size: var(--text-sm);
+  counter-increment: step;
+  content: counter(step);
+  display: inline-block;
+  width: calc(var(--spacing) * 16);
+  padding-right: calc(var(--spacing) * 6);
+  text-align: right;
+  color: var(--color-code-number);
+  background-color: var(--color-code);
+  position: sticky;
+  left: 0;
 }
