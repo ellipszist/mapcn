@@ -79,8 +79,6 @@ src/
 - Color palette is monochrome (grayscale oklch)
 - Generous, consistent white space; let layouts breathe rather than packing elements tightly
 - Clear typographic hierarchy - Geist Sans for UI/prose, Geist Mono for code/labels; use size, weight, and muted-foreground (not color) to establish hierarchy
-- Radius: `0.625rem` base with computed variants
-- Animations: `fade-up`, `fade-in`, `scale-in` with staggered delays (100ms intervals)
 - Header: sticky, backdrop-blur, gradient bottom border
 - Footer: gradient top border matching header
 

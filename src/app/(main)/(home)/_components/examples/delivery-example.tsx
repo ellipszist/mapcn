@@ -86,10 +86,7 @@ const truckPosition = route[Math.floor(route.length * 0.6)];
 
 export function DeliveryExample() {
   return (
-    <ExampleCard
-      className="aspect-square sm:col-span-2 sm:aspect-video lg:aspect-auto"
-      stagger={9}
-    >
+    <ExampleCard className="aspect-square sm:col-span-2 sm:aspect-video lg:aspect-auto">
       <Map
         center={[-0.105, 51.511]}
         zoom={12.6}

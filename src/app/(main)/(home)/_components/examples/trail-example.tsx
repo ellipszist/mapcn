@@ -25,7 +25,7 @@ const end = trailCoordinates[trailCoordinates.length - 1];
 
 export function TrailExample() {
   return (
-    <ExampleCard className="aspect-square" stagger={5}>
+    <ExampleCard className="aspect-square">
       <div className="bg-background/95 border-border/50 absolute top-3 left-3 z-10 rounded-lg border p-3 shadow-lg backdrop-blur-md">
         <div className="mb-2 flex items-center gap-1.5">
           <Bike className="text-foreground size-3.5" />

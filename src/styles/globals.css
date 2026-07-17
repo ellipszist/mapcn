@@ -158,7 +158,7 @@
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -166,48 +166,18 @@
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .animate-fade-up {
-  animation: fade-up 0.45s ease-out both;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.4s ease-out both;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.45s ease-out both;
+  animation: fade-up 0.4s ease-out both;
 }
 
 .animate-stagger {
   --stagger: 0;
-  --delay: 100ms;
+  --delay: 80ms;
   animation-delay: calc(var(--stagger) * var(--delay));
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
-  .animate-fade-in,
-  .animate-scale-in {
+  .animate-fade-up {
     animation: none;
   }
   .animate-stagger {

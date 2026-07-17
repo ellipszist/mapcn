@@ -40,10 +40,10 @@ export default function Page() {
       </PageHeader>
 
       <section
-        className="animate-fade-in animate-stagger container-wide"
+        className="animate-fade-up animate-stagger container-wide"
         style={
           {
-            "--stagger": 4,
+            "--stagger": 4.5,
           } as CSSProperties
         }
       >

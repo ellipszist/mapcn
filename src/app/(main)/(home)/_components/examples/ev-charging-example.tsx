@@ -117,7 +117,7 @@ const statusConfig: Record<
 
 export function EVChargingExample() {
   return (
-    <ExampleCard className="aspect-square" stagger={7}>
+    <ExampleCard className="aspect-square">
       <Map
         center={[-122.434, 37.776]}
         zoom={11}

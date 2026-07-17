@@ -75,11 +75,15 @@ function mergeHoverPaint<T extends Record<string, unknown>>(
 
 type Theme = "light" | "dark";
 
-// Check document class for theme (works with next-themes, etc.)
+// Check the document for an explicit theme (works with next-themes, etc.).
+// Covers both `attribute="class"` (the default) and `attribute="data-theme"`.
 function getDocumentTheme(): Theme | null {
   if (typeof document === "undefined") return null;
-  if (document.documentElement.classList.contains("dark")) return "dark";
-  if (document.documentElement.classList.contains("light")) return "light";
+  const root = document.documentElement;
+  if (root.classList.contains("dark")) return "dark";
+  if (root.classList.contains("light")) return "light";
+  const dataTheme = root.dataset.theme;
+  if (dataTheme === "dark" || dataTheme === "light") return dataTheme;
   return null;
 }
 
@@ -99,7 +103,8 @@ function useResolvedTheme(themeProp?: "light" | "dark"): Theme {
   useEffect(() => {
     if (themeProp) return; // Skip detection if theme is provided via prop
 
-    // Watch for document class changes (e.g., next-themes toggling dark class)
+    // Watch for document theme changes (e.g., next-themes toggling the class
+    // or the data-theme attribute).
     const observer = new MutationObserver(() => {
       const docTheme = getDocumentTheme();
       if (docTheme) {
@@ -108,7 +113,7 @@ function useResolvedTheme(themeProp?: "light" | "dark"): Theme {
     });
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["class"],
+      attributeFilter: ["class", "data-theme"],
     });
 
     // Also watch for system preference changes
@@ -244,6 +249,7 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   const [isStyleLoaded, setIsStyleLoaded] = useState(false);
   const [pendingStyle, setPendingStyle] = useState<MapStyleOption | null>(null);
   const currentStyleRef = useRef<MapStyleOption | null>(null);
+  const styleSwapInFlightRef = useRef(false);
   const internalUpdateRef = useRef(false);
   const resolvedTheme = useResolvedTheme(themeProp);
 
@@ -291,7 +297,10 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
       ...viewport,
     });
 
-    const styleLoadHandler = () => setIsStyleLoaded(true);
+    const styleLoadHandler = () => {
+      styleSwapInFlightRef.current = false;
+      setIsStyleLoaded(true);
+    };
     const loadHandler = () => setIsLoaded(true);
 
     // Viewport change handler - skip if triggered by internal update
@@ -345,7 +354,8 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
     internalUpdateRef.current = false;
   }, [mapInstance, isControlled, viewport]);
 
-  // Close the style gate before swapping styles so consumers observe the reset.
+  // Handle style change: close the gate (so layer children tear down and
+  // re-add on the incoming style) - the swap itself is staged to the effect below.
   useEffect(() => {
     if (!mapInstance || !resolvedTheme) return;
 
@@ -360,17 +370,19 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   }, [mapInstance, resolvedTheme, mapStyles]);
 
   useEffect(() => {
-    if (!mapInstance || !pendingStyle || isStyleLoaded) return;
+    if (!mapInstance || !pendingStyle) return;
 
     setPendingStyle(null);
+    styleSwapInFlightRef.current = true;
     // Full reload (no diff) so `style.load` fires deterministically. A
     // successful diff would never fire it, leaving isStyleLoaded stuck false.
     mapInstance.setStyle(pendingStyle, { diff: false });
-  }, [mapInstance, pendingStyle, isStyleLoaded]);
+  }, [mapInstance, pendingStyle]);
 
   // Sync projection when the prop changes after mount.
   useEffect(() => {
     if (!mapInstance || !isStyleLoaded || !projection) return;
+    if (styleSwapInFlightRef.current) return;
     mapInstance.setProjection(projection);
   }, [mapInstance, isStyleLoaded, projection]);
 
@@ -2189,4 +2201,25 @@ export {
   MapClusterLayer,
 };
 
-export type { MapRef, MapViewport, MapArcDatum, MapArcEvent, MapGeoJSONEvent };
+export type {
+  MapRef,
+  MapViewport,
+  MapStyleOption,
+  MapArcDatum,
+  MapArcEvent,
+  MapGeoJSONData,
+  MapGeoJSONFeature,
+  MapGeoJSONEvent,
+  MapProps,
+  MapMarkerProps,
+  MarkerContentProps,
+  MarkerPopupProps,
+  MarkerTooltipProps,
+  MarkerLabelProps,
+  MapControlsProps,
+  MapPopupProps,
+  MapRouteProps,
+  MapArcProps,
+  MapGeoJSONProps,
+  MapClusterLayerProps,
+};

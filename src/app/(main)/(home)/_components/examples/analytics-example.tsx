@@ -21,10 +21,7 @@ const analyticsData = [
 
 export function AnalyticsExample() {
   return (
-    <ExampleCard
-      className="aspect-square sm:col-span-2 sm:aspect-video lg:aspect-auto"
-      stagger={4}
-    >
+    <ExampleCard className="aspect-square sm:col-span-2 sm:aspect-video lg:aspect-auto">
       <div className="bg-background/95 border-border/50 absolute top-3 left-3 z-10 rounded-lg border p-3 shadow-lg backdrop-blur-md">
         <div className="text-muted-foreground mb-1 text-[10px] tracking-wider uppercase">
           Active Users
