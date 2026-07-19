@@ -803,7 +803,7 @@ export default function ApiReferencePage() {
             {
               name: "clusterColors",
               type: "[string, string, string]",
-              default: '["#22c55e", "#eab308", "#ef4444"]',
+              default: '["#3b82f6", "#1d4ed8", "#1e3a8a"]',
               description:
                 "Colors for cluster circles: [small, medium, large] based on point count.",
             },

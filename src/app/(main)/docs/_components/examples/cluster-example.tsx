@@ -22,8 +22,6 @@ export default function ClusterExample() {
           data="https://maplibre.org/maplibre-gl-js/docs/assets/earthquakes.geojson"
           clusterRadius={50}
           clusterMaxZoom={14}
-          clusterColors={["#1d8cf8", "#6d5dfc", "#e23670"]}
-          pointColor="#1d8cf8"
           onPointClick={(feature, coordinates) => {
             setSelectedPoint({
               coordinates,
@@ -52,7 +50,7 @@ export default function ClusterExample() {
               </p>
               <p className="text-muted-foreground">
                 Tsunami:{" "}
-                <span className="text-foreground font-medium">
+                <span className="text-foreground">
                   {selectedPoint.properties?.tsunami === 1 ? "Yes" : "No"}
                 </span>
               </p>

@@ -1884,7 +1884,7 @@ type MapClusterLayerProps<
   clusterMaxZoom?: number;
   /** Radius of each cluster when clustering points in pixels (default: 50) */
   clusterRadius?: number;
-  /** Colors for cluster circles: [small, medium, large] based on point count (default: ["#22c55e", "#eab308", "#ef4444"]) */
+  /** Colors for cluster circles: [small, medium, large] based on point count (default: ["#3b82f6", "#1d4ed8", "#1e3a8a"]) */
   clusterColors?: [string, string, string];
   /** Point count thresholds for color/size steps: [medium, large] (default: [100, 750]) */
   clusterThresholds?: [number, number];
@@ -1904,9 +1904,9 @@ type MapClusterLayerProps<
 };
 
 const DEFAULT_CLUSTER_COLORS: [string, string, string] = [
-  "#22c55e",
-  "#eab308",
-  "#ef4444",
+  "#3b82f6",
+  "#1d4ed8",
+  "#1e3a8a",
 ];
 const DEFAULT_CLUSTER_THRESHOLDS: [number, number] = [100, 750];
 
@@ -1973,7 +1973,7 @@ function MapClusterLayer<
           clusterThresholds[1],
           40,
         ],
-        "circle-stroke-width": 1,
+        "circle-stroke-width": 0.75,
         "circle-stroke-color": "#fff",
         "circle-opacity": 0.85,
       },
@@ -1987,7 +1987,7 @@ function MapClusterLayer<
       filter: ["has", "point_count"],
       layout: {
         "text-field": "{point_count_abbreviated}",
-        "text-font": ["Open Sans"],
+        "text-font": ["Open Sans Semibold"],
         "text-size": 12,
       },
       paint: {

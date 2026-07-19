@@ -6,10 +6,11 @@ export const blockComponents: Record<
   React.LazyExoticComponent<React.ComponentType<object>>
 > = {
   "analytics-map": React.lazy(() => import("./analytics-map/page")),
-  heatmap: React.lazy(() => import("./heatmap/page")),
+  choropleth: React.lazy(() => import("./choropleth/page")),
+  "analytics-card": React.lazy(() => import("./analytics-card/page")),
   "delivery-tracker": React.lazy(() => import("./delivery-tracker/page")),
+  "uptime-monitor": React.lazy(() => import("./uptime-monitor/page")),
+  heatmap: React.lazy(() => import("./heatmap/page")),
   "logistics-network": React.lazy(() => import("./logistics-network/page")),
   "store-locator": React.lazy(() => import("./store-locator/page")),
-  choropleth: React.lazy(() => import("./choropleth/page")),
-  "uptime-monitor": React.lazy(() => import("./uptime-monitor/page")),
 };
