@@ -3,7 +3,6 @@
 import { TrendingUp } from "lucide-react";
 
 import { Map, MapGeoJSON, MapMarker, MarkerContent } from "@/registry/map";
-import { Button } from "@/components/ui/button";
 import { totalVisitors, visitorGrowth, visitorLocations } from "./data";
 
 // Country borders from a public CDN, or swap in your own GeoJSON.
@@ -26,6 +25,7 @@ export default function Page() {
             dragPan={false}
             doubleClickZoom={false}
             pitchWithRotate={false}
+            className="[&_.maplibregl-canvas]:cursor-default! [&_.maplibregl-canvas-container]:cursor-default!"
             blank
           >
             <MapGeoJSON data={WORLD_GEOJSON} linePaint={false} />
@@ -50,7 +50,7 @@ export default function Page() {
         </div>
 
         <div
-          className="from-card to-card/0 pointer-events-none absolute inset-x-0 top-0 z-10 h-24 rounded-t-xl bg-linear-to-b [mask-image:linear-gradient(to_bottom,black_55%,transparent)] backdrop-blur-[2px]"
+          className="from-card via-card/85 to-card/0 pointer-events-none absolute inset-x-0 top-0 z-10 h-24 rounded-t-xl bg-linear-to-b mask-[linear-gradient(to_bottom,black_70%,transparent)] backdrop-blur-[2px]"
           aria-hidden
         />
 
@@ -59,20 +59,20 @@ export default function Page() {
             <h2 className="text-foreground text-lg font-medium tracking-tight">
               Analytics
             </h2>
-            <div className="mt-1.5 flex items-center gap-2">
-              <p className="text-muted-foreground text-xs font-medium">
-                <span className="tabular-nums">{totalVisitors}</span> visitors
-              </p>
-              <span className="inline-flex items-center gap-0.5 text-xs font-medium">
-                <TrendingUp className="size-2.5" />
-                {visitorGrowth}
-              </span>
-            </div>
+            <p className="text-muted-foreground mt-1 text-xs font-medium">
+              Last 30 days
+            </p>
           </div>
 
-          <Button variant="outline" size="xs" className="h-7 px-2.5">
-            View Analytics
-          </Button>
+          <div className="text-right">
+            <p className="text-foreground text-lg font-medium tracking-tight tabular-nums">
+              {totalVisitors}
+            </p>
+            <span className="text-muted-foreground mt-1 inline-flex items-center gap-0.5 text-xs font-medium">
+              <TrendingUp className="size-2.5" />
+              {visitorGrowth} visitors
+            </span>
+          </div>
         </div>
       </div>
     </div>
