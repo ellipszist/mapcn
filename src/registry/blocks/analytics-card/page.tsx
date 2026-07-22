@@ -2,6 +2,14 @@
 
 import { TrendingUp } from "lucide-react";
 
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Map, MapGeoJSON, MapMarker, MarkerContent } from "@/registry/map";
 import { totalVisitors, visitorGrowth, visitorLocations } from "./data";
 
@@ -16,7 +24,7 @@ function bubbleSize(visitors: number) {
 export default function Page() {
   return (
     <div className="flex min-h-screen items-center justify-center p-8">
-      <div className="bg-card relative aspect-16/10 w-full max-w-md overflow-hidden rounded-xl border shadow-sm">
+      <Card className="relative aspect-16/10 w-full max-w-md gap-0 overflow-hidden">
         <div className="absolute inset-0">
           <Map
             center={[1, 30]}
@@ -54,27 +62,20 @@ export default function Page() {
           aria-hidden
         />
 
-        <div className="relative z-20 flex items-start justify-between gap-3 p-4">
-          <div>
-            <h2 className="text-foreground text-lg font-medium tracking-tight">
-              Analytics
-            </h2>
-            <p className="text-muted-foreground mt-1 text-xs font-medium">
-              Last 30 days
-            </p>
-          </div>
+        <CardHeader className="relative z-20 gap-1">
+          <CardDescription>Visitors</CardDescription>
+          <CardTitle className="text-lg tabular-nums">
+            {totalVisitors}
+          </CardTitle>
 
-          <div className="text-right">
-            <p className="text-foreground text-lg font-medium tracking-tight tabular-nums">
-              {totalVisitors}
-            </p>
-            <span className="text-muted-foreground mt-1 inline-flex items-center gap-0.5 text-xs font-medium">
-              <TrendingUp className="size-2.5" />
-              {visitorGrowth} visitors
-            </span>
-          </div>
-        </div>
-      </div>
+          <CardAction>
+            <Badge variant="outline">
+              <TrendingUp />
+              {visitorGrowth} growth
+            </Badge>
+          </CardAction>
+        </CardHeader>
+      </Card>
     </div>
   );
 }
